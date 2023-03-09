@@ -88,18 +88,12 @@ WSGI_APPLICATION = "api_videoflix.wsgi.application"
 
 DATABASES = {
     "default": {
-        # "ENGINE": "django.db.backends.postgresql_psycopg2",
-        # "NAME": env("DATABASE_NAME"),
-        # "USER": env("DATABASE_USER"),
-        # "PASSWORD": env("DATABASE_PASSWORD"),
-        # "HOST": env("DATABASE_HOST"),
-        # "PORT": env("DATABASE_PORT"),
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "db",
-        "PORT": 5432,
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": env("DATABASE_NAME"),
+        "USER": env("DATABASE_USER"),
+        "PASSWORD": env("DATABASE_PASSWORD"),
+        "HOST": env("DATABASE_HOST"),
+        "PORT": env("DATABASE_PORT"),
     }
 }
 
