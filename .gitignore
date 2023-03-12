@@ -6,3 +6,4 @@ db.sqlite3
 /env_project
 docker-compose.yml
 env
+static/
