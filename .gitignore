@@ -7,3 +7,6 @@ db.sqlite3
 docker-compose.yml
 env
 static/
+media/
+migrations/
+__init__.py
