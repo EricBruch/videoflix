@@ -41,6 +41,7 @@ ALLOWED_HOSTS = [
     "*",
     "35.234.72.195",
     "videoflix.org",
+    "import_export",
 ]
 
 
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "debug_toolbar",
     "core.apps.CoreConfig",
+    "django_rq",
 ]
 
 MIDDLEWARE = [
@@ -139,7 +141,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR, "static/staticfiles")
 
 # Media files root
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -155,7 +157,10 @@ CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://127.0.0.1:6379/1",
-        "OPTIONS": {"CLIENT_CLASS": "django_redis.client.DefaultClient"},
+        "OPTIONS": {
+            "PASSWORD": "foobared",
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
         "KEY_PREFIX": "videoflix",
     }
 }
@@ -165,3 +170,19 @@ CACHES = {
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+# RQ QUESES
+
+RQ_QUEUES = {
+    "default": {
+        "HOST": "localhost",
+        "PORT": 6379,
+        "DB": 0,
+        "USERNAME": "default",
+        "PASSWORD": "foobared",
+        "DEFAULT_TIMEOUT": 360,
+        # "REDIS_CLIENT_KWARGS": {  # Eventual additional Redis connection arguments
+        #     "ssl_cert_reqs": None,
+        # },
+    },
+}
