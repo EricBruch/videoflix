@@ -1,0 +1,1 @@
+env/bin/python3.10 ./api_videoflix/manage.py shell < export_videos.py

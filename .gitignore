@@ -10,3 +10,5 @@ static/
 media/
 migrations/
 __init__.py
+
+exported_videos.json

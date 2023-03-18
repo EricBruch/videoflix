@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "core.apps.CoreConfig",
     "django_rq",
+    "import_export",
 ]
 
 MIDDLEWARE = [
@@ -186,3 +187,7 @@ RQ_QUEUES = {
         # },
     },
 }
+
+# Import_EXPORT SETTINGS
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True
