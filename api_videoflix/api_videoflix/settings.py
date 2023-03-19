@@ -66,7 +66,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     # project Apps
     "core.apps.CoreConfig",
-    "user",
+    "user.apps.UserConfig",
 ]
 
 MIDDLEWARE = [
