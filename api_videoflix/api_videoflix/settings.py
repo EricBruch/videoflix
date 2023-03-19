@@ -64,6 +64,12 @@ INSTALLED_APPS = [
     "import_export",
     "rest_framework",
     "rest_framework.authtoken",
+    "dj_rest_auth",
+    "django.contrib.sites",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "dj_rest_auth.registration",
     # project Apps
     "core.apps.CoreConfig",
     "user.apps.UserConfig",
@@ -204,7 +210,9 @@ IMPORT_EXPORT_USE_TRANSACTIONS = True
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.BasicAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
+        # "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
 }
+
+SITE_ID = 1
