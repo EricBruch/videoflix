@@ -24,13 +24,11 @@ from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = (
     [
         path("", include("core.urls")),
+        path("", include("user.urls")),
         path("admin/", admin.site.urls),
         path("__debug__/", include("debug_toolbar.urls")),
         path("django-rq/", include("django_rq.urls")),
-        path("api-token-auth/", obtain_auth_token, name="api_token_auth"),
-        path("dj-rest-auth/", include("dj_rest_auth.urls")),
-        path("dj-rest-auth/", include("dj_rest_auth.urls")),
-        path("dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),
+        # path("api-token-auth/", obtain_auth_token, name="api_token_auth"),
     ]
     + staticfiles_urlpatterns()
     + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

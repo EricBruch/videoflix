@@ -62,13 +62,14 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "django_rq",
     "import_export",
+    "django.contrib.sites",
+    "corsheaders",
     "rest_framework",
     "rest_framework.authtoken",
-    "dj_rest_auth",
-    "django.contrib.sites",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    "dj_rest_auth",
     "dj_rest_auth.registration",
     # project Apps
     "core.apps.CoreConfig",
@@ -79,6 +80,7 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -207,12 +209,38 @@ RQ_QUEUES = {
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
+#
+#   REST FRAMEWORK
+#
+
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.BasicAuthentication",
-        # "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
     ],
 }
 
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
 SITE_ID = 1
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = env("EMAIL_PORT")
+# EMAIL_USE_SSL = False
+
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = env(
+    "ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL"
+)
+# LOGIN_URL = "http://localhost:8000/api/v1/dj-rest-auth/login/"
+LOGIN_URL = env("LOGIN_URL")
+
+REST_AUTH_SERIALIZERS = {
+    "USER_DETAILS_SERIALIZER": "user.serializers.UserProfileSerializer"
+}

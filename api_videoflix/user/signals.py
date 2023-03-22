@@ -1,11 +1,10 @@
-from django.conf import settings
-from django.db.models.signals import post_save
+from allauth.account.signals import email_confirmed
 from django.dispatch import receiver
-from rest_framework.authtoken.models import Token
-from .models import CustomUser
 
 
-@receiver(post_save, sender=settings.AUTH_USER_MODEL)
-def create_auth_token(sender, instance=None, created=False, **kwargs):
-    if created:
-        Token.objects.create(user=instance)
+@receiver(email_confirmed)
+def email_confirmed_(request, email_address, **kwargs):
+    user = email_address.user
+    user.email_verified = True
+
+    user.save()
