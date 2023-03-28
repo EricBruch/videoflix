@@ -244,3 +244,9 @@ LOGIN_URL = env("LOGIN_URL")
 REST_AUTH_SERIALIZERS = {
     "USER_DETAILS_SERIALIZER": "user.serializers.UserProfileSerializer"
 }
+
+##################
+#   CORS
+##################
+
+CORS_ALLOWED_ORIGINS = ["http://localhost:4200"]
