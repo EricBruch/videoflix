@@ -14,7 +14,6 @@ def convert_360p(source):
 
 
 def convert(source, number):
-    print(number)
     target = source[:-4] + f"_{number}p.mp4"
     cmd = shlex.split(
         f'ffmpeg -i "{source}" -s hd{number} -c:v libx264 -crf 23 -c:a aac -strict -2 "{target}"'
