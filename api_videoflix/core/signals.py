@@ -8,9 +8,7 @@ from .utils import deleteVideoFiles
 
 @receiver(post_save, sender=Video)
 def video_post_save(sender, instance, created, **kwargs):
-    print("Video wurde gespeichert")
     if created:
-        print("New video created")
         queue = django_rq.get_queue("default", autocommit=True)
         queue.enqueue(convert_360p, instance.video_file.path)
         queue.enqueue(convert, instance.video_file.path, 480)
