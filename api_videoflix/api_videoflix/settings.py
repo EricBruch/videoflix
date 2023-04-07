@@ -115,6 +115,7 @@ WSGI_APPLICATION = "api_videoflix.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "OPTIONS": {"options": "-c search_path={}".format(env("DATABASE_SCHEMA"))},
         "NAME": env("DATABASE_NAME"),
         "USER": env("DATABASE_USER"),
         "PASSWORD": env("DATABASE_PASSWORD"),
