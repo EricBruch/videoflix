@@ -33,9 +33,6 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = "django-insecure-c6*^szk!sjemq!#pvf2e#n!#4k*k11rxz*ps(1^+u^*y(e%8bk"
 # env("DJANGO_DEBUG", default=False)
 
-# Custom User
-AUTH_USER_MODEL = "user.CustomUser"
-
 ALLOWED_HOSTS = [
     "0.0.0.0",
     "http://127.0.0.1:8000/",
@@ -75,6 +72,9 @@ INSTALLED_APPS = [
     "core.apps.CoreConfig",
     "user.apps.UserConfig",
 ]
+
+# Custom User
+AUTH_USER_MODEL = "user.CustomUser"
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
