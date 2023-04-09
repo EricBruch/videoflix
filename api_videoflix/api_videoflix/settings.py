@@ -250,4 +250,7 @@ REST_AUTH_SERIALIZERS = {
 #   CORS
 ##################
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:4200"]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",
+    "eric-bruch.developerakademie.com/videoflix",
+]
