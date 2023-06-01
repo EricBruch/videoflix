@@ -37,10 +37,6 @@ def forgot_password(request):
 @api_view(["POST"])
 @permission_classes([AllowAny])
 def change_password_on_secret(request):
-    # user = CustomUser.objects.get(username="troja")
-    # user.set_password("okfhgzrkfkfkfrkfj")
-    # user.save()
-    # return Response({"message": "executed successfully"})
     try:
         username, pw1, pw2, secret = (
             request.data["username"],
