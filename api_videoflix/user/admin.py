@@ -6,6 +6,7 @@ from .forms import CustomUserCreationForm
 
 # Register your models here.
 
+
 @admin.register(CustomUser)
 class CustomUserAdmin(admin.ModelAdmin):
     add_form = CustomUserCreationForm
@@ -18,6 +19,7 @@ class CustomUserAdmin(admin.ModelAdmin):
                     "custom",
                     "phone",
                     "address",
+                    "resetSecret",
                 )
             },
         ),
